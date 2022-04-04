@@ -40,6 +40,7 @@ public class Main {
                         "It is dark and spooky...\n" +
                         "A large dragon jumps out in front of you! He opens his hand and...\n" +
                         "Offers to share treasure with you");
+                break;
         }
     }
 }
