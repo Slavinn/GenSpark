@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         boolean quit = false;
         int action = 0;
         System.out.println("You are in a land full of dragons. In front of you,\n" +
@@ -16,17 +17,19 @@ public class Main {
                 "Which cave will you go into? (1 or 2)\n");
 
         while (!quit) {
-            if(scanner.hasNextInt()) {
+            try {
+                scanner.hasNextInt();
                 action = scanner.nextInt();
                 if (action == 1 || action == 2) {
                     quit = true;
                 } else {
                     System.out.println("Invalid input please select (1 or 2)");
                 }
-            } else {
+            } catch (Exception e) {
                 System.out.println("Invalid input please select (1 or 2)");
+            } finally {
+                scanner.nextLine();
             }
-            scanner.nextLine();
         }
         switch (action) {
             case 1:
