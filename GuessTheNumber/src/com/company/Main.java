@@ -17,13 +17,18 @@ public class Main {
         System.out.println("Well, " + name + ", I am thinking of a number between 1 and 20.");
         guessTheNumber(name);
         while (play) {
-            String input = scanner.nextLine();
-            if (input.toLowerCase().equals("n")) {
-                play = false;
-            } else if (input.toLowerCase().equals("y")) {
-                guessTheNumber(name);
-            } else {
-                System.out.println("Invalid input please select (y or n");
+            try {
+
+                String input = scanner.nextLine();
+                if (input.toLowerCase().equals("n")) {
+                    play = false;
+                } else if (input.toLowerCase().equals("y")) {
+                    guessTheNumber(name);
+                } else {
+                    throw new Exception("Invalid input please select (y or n)");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -36,23 +41,26 @@ public class Main {
             System.out.println(
                     "You have " + (MAX_GUESSES - guesses) + " remaining.\n" +
                             "Take a guess.\n");
-            if (scanner.hasNextInt()) {
+            try {
+                if (!scanner.hasNextInt()) {
+                    throw new Exception("Please enter a number!");
+                }
                 int guess = scanner.nextInt();
                 if (guess == secrentNumber) {
                     System.out.println("Good job, " + name + "! You guessed my number in " + (MAX_GUESSES - guesses) + " guesses!");
-                    scanner.nextLine();
                     break;
                 } else if (guess < secrentNumber) {
-                    System.out.println("Your guess is too low.");
+                    throw new Exception("Your guess is too low.");
                 } else if (guess > secrentNumber) {
-                    System.out.println("Your guess is too high.");
-
+                    throw new Exception("Your guess is too high.");
                 }
-            } else {
-                System.out.println("Please enter a number!");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                guesses++;
+                scanner.nextLine();
             }
-            guesses++;
-            scanner.nextLine();
+
         }
         System.out.println("Would you like to play again? (y or n)");
 
