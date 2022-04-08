@@ -58,12 +58,15 @@ public class HangMan {
     private void setRandomString() {
         this.randomString = fetchRandomWord();
     }
+    public  void setRandomString(String string) {
+        this.randomString = string;
+    }
 
     public int getWrongGuesses() {
         return wrongGuesses;
     }
 
-    private void setWrongGuesses(int wrongGuesses) {
+    public void setWrongGuesses(int wrongGuesses) {
         this.wrongGuesses = wrongGuesses;
     }
 
@@ -71,11 +74,11 @@ public class HangMan {
         return guessingString;
     }
 
-    private void setGuessingString(int length) {
+    public void setGuessingString(int length) {
         this.guessingString = new String(new char[length]).replace('\0', '_');
     }
 
-    private void setGuessingString(String updatedString) {
+    public void setGuessingString(String updatedString) {
         this.guessingString = updatedString;
     }
 
@@ -90,6 +93,7 @@ public class HangMan {
     private void setGuessedLetters() {
         this.guessedLetters ="";
     }
+
 
     public void setGuessedLetters(char guessedLetter) {
         this.guessedLetters += guessedLetter;
