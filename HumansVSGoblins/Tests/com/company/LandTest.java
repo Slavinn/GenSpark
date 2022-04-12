@@ -67,7 +67,7 @@ class LandTest {
         coordinates.put("row", 9);
         coordinates.put("column", 20);
 
-        assertTrue(map.inBoundsCheck(coordinates));
+        assertTrue(map.inBoundsCheck(9,10));
     }
     @Test
     void inBoundsCheckFalseRow() {
@@ -75,7 +75,7 @@ class LandTest {
         coordinates.put("row", 10);
         coordinates.put("column", 20);
 
-        assertFalse(map.inBoundsCheck(coordinates));
+        assertFalse(map.inBoundsCheck(10,20));
     }
 
     @Test
@@ -84,7 +84,7 @@ class LandTest {
         coordinates.put("row", 9);
         coordinates.put("column", -1);
 
-        assertFalse(map.inBoundsCheck(coordinates));
+        assertFalse(map.inBoundsCheck(9, -1));
     }
 
     @Test

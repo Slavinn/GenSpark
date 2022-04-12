@@ -2,23 +2,21 @@ package com.company;
 
 import java.util.Hashtable;
 
-public class Human extends Humanoid{
-
-    public Human() {
-        super('H');
-    }
+public class Goblin extends Humanoid {
 
 
-    public void attack(Goblin goblin) {
+
+    public void attack(Human human) {
         int attackDMG = Math.toIntExact(Math.round(Math.random() * getStrength()));
-        System.out.println("You attack the Goblin for " + attackDMG +" damage!");
-        int remainingHealth = goblin.getHealth() - attackDMG;
-        goblin.setHealth(remainingHealth);
-        if (goblin.getHealth() <= 0 ){
-            System.out.println(goblin.toString());
+        System.out.println("The Goblin attacks you for " + attackDMG +" damage!");
+        int remainingHealth = human.getHealth() - attackDMG;
+        human.setHealth(remainingHealth);
+        if (human.getHealth() <= 0 ){
+            System.out.println(human.toString());
         } else {
-            System.out.println(goblin.toString());
+            System.out.println(human.toString());
         }
+
     }
 
     @Override
@@ -26,15 +24,15 @@ public class Human extends Humanoid{
         return super.collide(row, column, map);
     }
 
-    public Human(char identifier) {
-        super(identifier);
+    public Goblin() {
+        super('G', 10,5);
     }
 
-    public Human(char identifier, int health, int strength) {
+    public Goblin(char identifier,int health, int strength) {
         super(identifier,health, strength);
     }
 
-    public Human(int health, int strength, Hashtable<String, Integer> coordinates, char identifier) {
+    public Goblin(int health, int strength, Hashtable<String, Integer> coordinates, char identifier) {
         super(health, strength, coordinates, identifier);
     }
 
@@ -78,15 +76,12 @@ public class Human extends Humanoid{
         super.setCoordinates(coordinates);
     }
 
-    public Human(int health, int strength, Hashtable<String, Integer> coordinates) {
-        super(health, strength, coordinates, 'H');
-    }
-
     @Override
     public String toString() {
         if (getHealth() > 0) {
-            return "You have " + getHealth() + " health remaining\n";
+            return "The Goblin has " + getHealth() + " health remaining\n";
         }
-        return "You died from that attack\n";
+        return "The Goblin has died from that attack\n";
     }
+
 }

@@ -10,20 +10,15 @@ public class Humanoid implements Actions {
     private char identifier;
 
 
-    @Override
-    public void move(Hashtable<String, Integer> coordinates) {
-        this.coordinates = coordinates;
+
+
+
+    public void attack(Humanoid humanoid) {
+        return;
     }
 
     @Override
-    public Class attack(Class object) {
-        return object;
-    }
-
-    @Override
-    public boolean collide(Hashtable<String, Integer> coordinates, Land map) {
-        int row = coordinates.get("row");
-        int column = coordinates.get("column");
+    public boolean collide(int row, int column, Land map) {
         return (map.getTileUtf(row, column) == 'G') ? true : false;
     }
 
@@ -35,13 +30,15 @@ public class Humanoid implements Actions {
         }}, identifier);
     }
 
-    public Humanoid(int health, int strength) {
+    public Humanoid(char identifier, int health, int strength) {
+        this.identifier = identifier;
         this.health = health;
         this.strength = strength;
-        this.coordinates = new Hashtable<>() {{
-            put("row", 9);
-            put("column", 12);
-        }};
+        this.coordinates = new Hashtable<>();
+//        {{
+//            put("row", 9);
+//            put("column", 12);
+//        }};
     }
 
     public Humanoid(int health, int strength, Hashtable<String, Integer> coordinates, char identifier) {
