@@ -10,22 +10,20 @@ public class Main {
 	// write your code here
         Hangman game = new Hangman();
         game.setHangMan();
-        int index = 0;
         int guesses = 0;
         boolean newGame = false;
         System.out.println("Please enter name for the scoreBoard");
         game.setName(scanner.nextLine());
         while(!newGame) {
             try {
-
                 game.getHangMan().stream().forEach(System.out::println);
                 System.out.println("Missed letters: " + game.getWrongGuesses());
                 System.out.println(game.getGuessingString());
                 System.out.println("Guess a letter:");
                 char guessChar  = scanner.nextLine().charAt(0);
 
-                if((index = game.randomStringHasCharacter(guessChar)) > -1) {
-                    game.setGuessingString(index, guessChar);
+                if((game.randomStringHasCharacter(guessChar)) > -1) {
+                    game.setGuessingString( guessChar);
                     game.setScore(10 - guesses);
                 } else {
                     guesses++;
@@ -49,8 +47,11 @@ public class Main {
                     String output = scanner.nextLine();
                     if (output.equalsIgnoreCase("yes")) {
                         game = new Hangman();
+                        game.setHangMan();
+                        guesses = 0;
                         System.out.println("Please enter name for the scoreBoard");
                         game.setName(scanner.nextLine());
+                        newGame = false;
                     }
                 }
 

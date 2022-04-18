@@ -7,8 +7,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Hangman {
@@ -23,7 +25,7 @@ public class Hangman {
 
 
     public Hangman() {
-        setRandomString("Tree");
+        setRandomString("cat");
         setGuessingString();
         this.wrongGuesses = "";
         this.score = 0;
@@ -67,8 +69,9 @@ public class Hangman {
         this.guessingString = new StringBuilder(str);
     }
 
-    public void setGuessingString(int index, char letter) {
-        this.guessingString.setCharAt(index, letter);
+    public void setGuessingString(char letter) {
+        IntStream value = IntStream.range(0,this.randomString.length()).filter(l -> this.randomString.charAt(l) == letter);
+        value.forEach(i -> this.guessingString.setCharAt(i, letter));
     }
 
     public void getScores() {
@@ -78,7 +81,7 @@ public class Hangman {
             }
             Stream<String> fileStream = Files.lines(Paths.get(this.highscores.getPath()));
             System.out.println("Top scores: ");
-            fileStream.sorted((s1, s2) -> s1.split(" ")[0].compareTo(s2.split(" ")[0])).forEach(System.out::println);
+            fileStream.sorted((s1, s2) -> s2.split(" ")[0].compareTo(s1.split(" ")[0])).forEach(System.out::println);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -87,7 +90,7 @@ public class Hangman {
 
     public void addScores() {
         try{
-            Files.writeString(this.highscores.toPath(), String.format("%s %s", getScore(),getName()));
+            Files.writeString(this.highscores.toPath(), String.format("%s %s\n", getScore(),getName()), StandardOpenOption.APPEND);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
