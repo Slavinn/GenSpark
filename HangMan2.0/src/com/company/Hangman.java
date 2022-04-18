@@ -25,12 +25,18 @@ public class Hangman {
 
 
     public Hangman() {
-        setRandomString("cat");
-        setGuessingString();
+        try{
+            fetchRandomWord();
+            setGuessingString();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         this.wrongGuesses = "";
         this.score = 0;
         this.hangMan = new ArrayList<>();
         this.name = "";
+
     }
 
     public void setHangMan() {
@@ -160,9 +166,9 @@ public class Hangman {
         }
     }
 
-    public String fetchRandomWord() {
+    public void fetchRandomWord() {
         try {
-            URL connection = new URL("https://random-word-api.herokuapp.com/word?number=1&swear=0");
+            URL connection = new URL("https://random-word-api.herokuapp.com/word?number=1");
             HttpURLConnection httpURLConnection = (HttpURLConnection) connection.openConnection();
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
@@ -179,7 +185,7 @@ public class Hangman {
                 in.close();
 
                 //Set RandomString to result
-                return response.toString();
+                setRandomString(response.toString());
             } else {
                 throw new Exception("Error fetching word from API");
             }
@@ -188,7 +194,6 @@ public class Hangman {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return null;
     }
 
 
