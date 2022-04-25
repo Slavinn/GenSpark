@@ -6,16 +6,11 @@ public class Goblin extends Humanoid {
 
 
 
-    public void attack(Human human) {
+    public String attack(Human human) {
         int attackDMG = Math.toIntExact(Math.round(Math.random() * getStrength()));
-        System.out.println("The Goblin attacks you for " + attackDMG +" damage!");
         int remainingHealth = human.getHealth() - attackDMG;
         human.setHealth(remainingHealth);
-        if (human.getHealth() <= 0 ){
-            System.out.println(human.toString());
-        } else {
-            System.out.println(human.toString());
-        }
+        return  String.format("The Goblin attacks you for " + attackDMG +" damage!\n") + human;
 
     }
 

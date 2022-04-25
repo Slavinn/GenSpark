@@ -100,14 +100,17 @@ public class Land {
         setGrid(grid);
     }
 
-    public void printGrind() {
-        ArrayList<ArrayList<Tile>> grind = getGrid();
+    public ArrayList<String> getCharacterGrid() {
+        ArrayList<String> map = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
+            String row = new String();
             for (int j = 0; j < 25; j++) {
-                System.out.print(getTileUtf(i, j));
+                row += getTileUtf(i, j);
             }
-            System.out.println();
+            row += "\n";
+            map.add(row);
         }
+        return map;
     }
 
     public void move(Human human, Goblin goblin) {
@@ -200,9 +203,6 @@ public class Land {
 
                     }
                 }
-                break;
-            case 'q':
-                System.exit(0);
                 break;
             default:
                 break;

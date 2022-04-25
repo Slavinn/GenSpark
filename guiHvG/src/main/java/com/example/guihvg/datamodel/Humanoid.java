@@ -12,8 +12,8 @@ public class Humanoid implements Actions {
 
 
 
-    public void attack(Humanoid humanoid) {
-        return;
+    public String attack(Humanoid humanoid) {
+        return "";
     }
 
     @Override
