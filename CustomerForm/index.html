@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="container">
+    <header>
+      <h1>Customer Details:</h1>
+    </header>
+
+    <form class="form-container">
+      <section class="section-container">
+        <h3>Full Name <span class="required">*</span></h3>
+        <div class="input-inline">
+          <input class="input-fields" type="text" placeholder="First Name" />
+          <input class="input-fields" type="text" placeholder="Last Name" />
+        </div>
+      </section>
+
+      <section class="section-container">
+        <h3>Address <span class="required">*</span></h3>
+        <input class="input-fields" type="text" placeholder="Street Address" />
+        <input
+          class="input-fields"
+          type="text"
+          placeholder="Street Address 2"
+        />
+        <div class="input-inline">
+          <input class="input-fields" type="text" placeholder="City" />
+          <input class="input-fields" type="text" placeholder="State" />
+        </div>
+
+        <input class="input-fields" type="text" placeholder="Postal/Zip Code" />
+      </section>
+      <section class="section-container">
+        <h3>Phone Number <span class="required">*</span></h3>
+        <div class="input-inline">
+          <input
+            class="input-fields"
+            type="text"
+            placeholder="(000) 000-0000"
+          />
+        </div>
+      </section>
+      <section class="section-container">
+        <input class="button" type="submit" value="Submit" />
+      </section>
+    </form>
+  </body>
+</html>
