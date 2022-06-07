@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer submit</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const load = () => {
+        document.getElementById("firstName").innerHTML = localStorage.getItem("first_name");
+        document.getElementById("lastName").innerHTML = localStorage.getItem("last_name");
+        document.getElementById("addressOne").innerHTML = localStorage.getItem("address_one");
+        document.getElementById("addressTwo").innerHTML = localStorage.getItem("address_two");
+        document.getElementById("city").innerHTML = localStorage.getItem("city");
+        document.getElementById("state").innerHTML = localStorage.getItem("state");
+        document.getElementById("zipCode").innerHTML = localStorage.getItem("zip_code");
+        document.getElementById("phoneNumber").innerHTML = localStorage.getItem("phone_number");
+        localStorage.clear();
+      };
+      window.onload = load;
+    </script>
+  </head>
+  <body>
+    <h1>Customer Details submitted</h1>
+  </body>
+  <ul class="submittedData">
+    <label>First name: </label>
+    <li id="firstName"></li>
+
+    <label>Last name: </label>
+    <li id="lastName"></li>
+
+    <label>Primary Address: </label>
+    <li id="addressOne"></li>
+
+    <label>Secondary Address: </label>
+    <li id="addressTwo"></li>
+
+    <label>City: </label>
+    <li id="city"></li>
+
+    <label>State: </label>
+    <li id="state"></li>
+
+    <label>Zip Code </label>
+    <li id="zipCode"></li>
+
+    <label>Phone Number: </label>
+    <li id="phoneNumber"></li>
+  </ul>
+  </body>
+</html>
